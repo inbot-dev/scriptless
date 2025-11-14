@@ -3,7 +3,7 @@ const fs = require('fs');
 
 // Server
 const serv = 'Contabo';
-const wait = 2 // in minute
+const wait = 10 // in minute
 // Client
 const chat = 285810888;
 

@@ -7,7 +7,7 @@ const fs = require('fs');
 
 // Server
 const serv = 'Vultr';
-const wait = 5; // in minute
+const wait = 15; // in minute
 // All Message New
 const servs = [];
 let mess = {};
@@ -42,8 +42,8 @@ const storeSession = new StoreSession(sess);
             phoneCode: async () => await input.text('Please enter the code you received: '),
             onError: (err) => console.log(err),
         });
-        console.log('You should now be connected.');
         client.session.save();
+        console.log('You should now be connected.');
         async function eventPrint(event) {
             mess = JSON.parse(fs.readFileSync(`./${fileName}.json`, 'utf8'));
             const message = event.message;
@@ -57,7 +57,7 @@ const storeSession = new StoreSession(sess);
                 if((parseFloat(Date.now()) - parseFloat(mess[x]) > wait * 60000 * 2) && parseFloat(mess[x]) != 0){
                     await client.invoke(
                         new Api.messages.SendMessage({
-                            peer: 'edonez',
+                            peer: 'notifserver',
                             message: `Server ${x} is Off, Check it Now ...`
                         })
                     );
