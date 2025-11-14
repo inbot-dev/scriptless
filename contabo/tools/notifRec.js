@@ -6,8 +6,8 @@ const delay = require('delay');
 const fs = require('fs');
 
 // Server
-const serv = 'Vultr';
-const wait = 5; // in minute
+const serv = 'Contabo';
+const wait = 1; // in minute
 // All Message New
 const servs = [];
 let mess = {};
@@ -63,24 +63,24 @@ const storeSession = new StoreSession(sess);
                     );
                 };
             };
-            await fetch(`https://api.telegram.org/bot8573549118:AAEdKAGmvlCiskq5VwfT-so4NX2_xtHiV3I/sendMessage?text=Server%20${serv}%20for%20Notification%20Receiver%20is%20Running%20...&chat_id=277081400`);
+            await fetch(`https://api.telegram.org/bot2013105572:AAH1WNGcIbUfw8EUQq3UPJT7NMi3XK8wE-s/sendMessage?text=Server%20${serv}%20for%20Notification%20Receiver%20is%20Running%20...&chat_id=277081400`);
             console.log(`Sent Notif Server ...`);
         };
-        await fetch(`https://api.telegram.org/bot6506982300:AAGm-cuJMfQN1cv9ljXEOemNX7ww2OJ7VQY/sendMessage?text=${serv}&chat_id=285810888`);
+        await fetch(`https://api.telegram.org/bot5851565456:AAHqmuey2tCxE43cqPaHuLILBEXCjD5CXiU/sendMessage?text=${serv}&chat_id=285810888`);
         client.addEventHandler(eventPrint, new NewMessage({ chats: [chat] }));
     }catch(err){
         let e = 1;
         if(err['errorMessage'] === 'FLOOD'){
-            await fetch(`https://api.telegram.org/bot8573549118:AAEdKAGmvlCiskq5VwfT-so4NX2_xtHiV3I/sendMessage?text=Server%20${serv}%20Tele%20Flood%20Begin%20...&chat_id=277081400`);
+            await fetch(`https://api.telegram.org/bot2013105572:AAH1WNGcIbUfw8EUQq3UPJT7NMi3XK8wE-s/sendMessage?text=Server%20${serv}%20Tele%20Flood%20Begin%20...&chat_id=277081400`);
             for(let x = 0; x <= parseInt(err['seconds']); x++){
                 await delay(1000);
                 console.log(`Waiting Flood ${e} of ${err['seconds']}`);
                 e++;
             };
-            await fetch(`https://api.telegram.org/bot8573549118:AAEdKAGmvlCiskq5VwfT-so4NX2_xtHiV3I/sendMessage?text=Server%20${serv}%20Tele%20Flood%20End%20...&chat_id=277081400`);
-            await fetch(`https://api.telegram.org/bot6506982300:AAGm-cuJMfQN1cv9ljXEOemNX7ww2OJ7VQY/sendMessage?text=${serv}&chat_id=${chat}`);
+            await fetch(`https://api.telegram.org/bot2013105572:AAH1WNGcIbUfw8EUQq3UPJT7NMi3XK8wE-s/sendMessage?text=Server%20${serv}%20Tele%20Flood%20End%20...&chat_id=277081400`);
+            await fetch(`https://api.telegram.org/bot5851565456:AAHqmuey2tCxE43cqPaHuLILBEXCjD5CXiU/sendMessage?text=${serv}&chat_id=${chat}`);
         }else{
-            await fetch(`https://api.telegram.org/bot8573549118:AAEdKAGmvlCiskq5VwfT-so4NX2_xtHiV3I/sendMessage?text=Server%20${serv}%20Error%20check%20it%20Out%20...&chat_id=277081400`);
+            await fetch(`https://api.telegram.org/bot2013105572:AAH1WNGcIbUfw8EUQq3UPJT7NMi3XK8wE-s/sendMessage?text=Server%20${serv}%20Error%20check%20it%20Out%20...&chat_id=277081400`);
             console.log(`Sent Error Notif Server ...`);
             await delay(wait * 60000);
         };
