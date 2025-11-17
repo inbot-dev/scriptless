@@ -60,10 +60,10 @@ const storeSession = new StoreSession(sess);
             const formatted_config = JSON.stringify(mess, null, 4);
             fs.writeFileSync(`./${fileName}.json`, formatted_config, 'utf8');
             for(let x of Object.keys(mess)){
-                if((parseFloat(Date.now()) - parseFloat(mess[x]) > wait * 60000 * 2) && parseFloat(mess[x]) != 0){
+                if((parseFloat(Date.now()) - parseFloat(mess[x]) > wait * 60000) && parseFloat(mess[x]) != 0){
                     await client.invoke(
                         new Api.messages.SendMessage({
-                            peer: 'wildan_sy',
+                            peer: 'edonez',
                             message: `Server ${x} is Off, Check it Now ...`
                         })
                     );
