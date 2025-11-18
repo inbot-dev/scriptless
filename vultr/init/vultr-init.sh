@@ -70,6 +70,8 @@ a2enmod env
 a2enmod dir
 a2enmod mime
 sudo a2enmod proxy proxy_http proxy_balancer lbmethod_byrequests
+a2dissite 000-default 
+a2enmod proxy proxy_http rewrite headers expires
 service apache2 restart
 cd
 mkdir -p /root/tools
