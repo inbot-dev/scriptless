@@ -9,7 +9,8 @@ wget -q -O- http://www.webmin.com/jcameron-key.asc | sudo apt-key add
 sudo apt-get update
 sudo apt install -y webmin
 sudo apt-get update -y
-sudo apt-get update
+sudo /root/setup-repos.sh
+sudo apt-get update -y
 sudo apt-get clean -y
 sudo apt-get install -y wget curl unzip zip screen git fontconfig rar dos2unix
 sudo apt-get update
@@ -31,7 +32,8 @@ printf "enter" | sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt-get update
 sudo apt-get clean -y
 sudo apt install -y python3.13
-apt install -y python3-pip
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.13 1
+sudo apt install -y python3-pip
 sudo apt install -y python-is-python3
 pip install gdown
 sudo apt-get install -y build-essential
