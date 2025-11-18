@@ -3,9 +3,12 @@
 sudo apt-get update
 sudo apt-get clean -y
 [ -e '/etc/needrestart/needrestart.conf' ] && (printf "\n\$nrconf{restart} = 'a';" >> /etc/needrestart/needrestart.conf)
-wget https://software.virtualmin.com/gpl/scripts/virtualmin-install.sh
-sudo sh virtualmin-install.sh -f -v
-rm -rf virtualmin-install.sh virtualmin-install.log update.txt
+sudo apt-get install -y wget curl unzip zip nano ufw squid apache2-utils screen iptables fail2ban git fontconfig dos2unix squid apache2-utils
+printf "\ndeb http://download.webmin.com/download/repository sarge contrib">>/etc/apt/sources.list
+wget -q -O- http://www.webmin.com/jcameron-key.asc | sudo apt-key add
+sudo apt-get update
+sudo apt install -y webmin
+sudo apt-get update -y
 sudo apt-get update
 sudo apt-get clean -y
 sudo apt-get install -y wget curl unzip zip screen git fontconfig rar dos2unix
