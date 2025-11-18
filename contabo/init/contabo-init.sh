@@ -97,33 +97,12 @@ a2enmod mime
 sudo a2enmod proxy proxy_http proxy_balancer lbmethod_byrequests
 service apache2 restart
 cd
-mkdir -p /root/idena
-cd /root/idena
-curl -s https://api.github.com/repos/idena-network/idena-go/releases/latest | grep browser_download_url | grep idena-node-linux- | cut -d '"' -f 4 | head -n 1 | wget -qi -
-mv idena-node-linux* idena-go
-chmod +x idena-go
-echo "{\"IpfsConf\":{\"Profile\": \"server\" ,\"FlipPinThreshold\":1},\"Sync\": {\"LoadAllFlips\": true, \"AllFlipsLoadingTime\":7200000000000}}" >> /root/idena/config.json
-npm i npm@latest -g
-git clone https://github.com/idena-network/idena-node-proxy
-cd /root/idena/idena-node-proxy
-npm i -g pm2
-cd /root/idena
-mkdir -p /root/idena/datadir
-cd /root/idena/datadir
-touch /root/idena/datadir/api.key
-echo 'xxxapikeyxxx' >> /root/idena/datadir/api.key
-mkdir -p /root/idena/datadir/keystore
-touch /root/idena/datadir/keystore/nodekey
-echo 'xxxnodekeyxxx' >> /root/idena/datadir/keystore/nodekey
 cd /root/tools
 pm2 start notif.js --name=notif --node-args="--max-old-space-size=8192"
 pm2 stop notif
 cd /root/gunbot.my.id
 pm2 start gunthy-linux --name=gunbot
 pm2 stop gunbot
-cd /root/bitrage.gunbot.my.id
-pm2 start gunthy-linux --name=bitrage-gunbot
-pm2 stop bitrage-gunbot
 pm2 save --force
 
 exit 0

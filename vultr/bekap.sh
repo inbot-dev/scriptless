@@ -57,12 +57,21 @@ chmod +x /root/gd_bu
     curl -s -X POST https://api.telegram.org/bot1899238854:AAH0tUYroXQLLmDw-sED2lzlE-ao2UpUbzM/sendMessage -d chat_id=277081400 -d text="Backup Idena Selesai"
 )
 
+curl -s -X POST https://api.telegram.org/bot1899238854:AAH0tUYroXQLLmDw-sED2lzlE-ao2UpUbzM/sendMessage -d chat_id=277081400 -d text="Backup Semua Vultr Config RClone Mulai"
+mkdir -p /root/gd_bu/.config
+chmod +x /root/gd_bu/.config
+\cp -avrf /root/.config/* /root/gd_bu/.config/
+zip -r /root/gd_bu/.config.zip /root/gd_bu/.config
+curl -s -X POST https://api.telegram.org/bot1899238854:AAH0tUYroXQLLmDw-sED2lzlE-ao2UpUbzM/sendMessage -d chat_id=277081400 -d text="Backup Semua Vultr Config RClone Selesai"
+
 curl -s -X POST https://api.telegram.org/bot1899238854:AAH0tUYroXQLLmDw-sED2lzlE-ao2UpUbzM/sendMessage -d chat_id=277081400 -d text="Backup Semua Vultr File SH Mulai"
 mkdir -p /root/gd_bu/.sh
 chmod +x /root/gd_bu/.sh
 \cp -avrf /root/*.sh /root/gd_bu/.sh/
 zip -r /root/gd_bu/.sh.zip /root/gd_bu/.sh
 curl -s -X POST https://api.telegram.org/bot1899238854:AAH0tUYroXQLLmDw-sED2lzlE-ao2UpUbzM/sendMessage -d chat_id=277081400 -d text="Backup Semua Vultr File SH Selesai"
+
+rclone sync --progress --drive-acknowledge-abuse --local-no-check-updated --checksum --metadata /root/gd_bu/ ws-onedrive:Server/Backup/Vultr
 
 rm -rf /root/bekap_json/
 rm -rf /root/gd_bu
