@@ -4,6 +4,7 @@ const { StoreSession } = require('telegram/sessions');
 const input = require('input');
 const delay = require('delay');
 const fs = require('fs');
+const { parse } = require('path');
 
 // Server
 const serv = 'Vultr';
@@ -23,6 +24,8 @@ const hash = '987fb7123654e39d10ac24e177b8b704';
 let chat = 285810888; // Will be updated to bot's ID
 const sess = `./session/${fileName}WD`;
 const storeSession = new StoreSession(sess);
+
+let running_ts = 0;
 
 // Start Script
 (async () => {
@@ -69,8 +72,11 @@ const storeSession = new StoreSession(sess);
                     );
                 };
             };
-            await fetch(`https://api.telegram.org/bot8573549118:AAEdKAGmvlCiskq5VwfT-so4NX2_xtHiV3I/sendMessage?text=Server%20${serv}%20for%20Notification%20Receiver%20is%20Running%20...&chat_id=277081400`);
-            console.log(`Sent Notif Server ...`);
+            if(parseFloat(Date.now()) - parseFloat(running_ts) > wait * 60000){
+                running_ts = Date.now();
+                await fetch(`https://api.telegram.org/bot8573549118:AAEdKAGmvlCiskq5VwfT-so4NX2_xtHiV3I/sendMessage?text=Server%20${serv}%20for%20Notification%20Receiver%20is%20Running%20...&chat_id=277081400`);
+                console.log(`Sent Notif Server ...`);
+            };
         };
         // Fetch the last message and process it
         try {
