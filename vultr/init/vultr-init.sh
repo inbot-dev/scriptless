@@ -31,7 +31,7 @@ printf "enter" | sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt-get update
 sudo apt-get clean -y
 sudo apt install -y python3.13
-sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.13 1
+# sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.13 1
 sudo apt install -y python3-pip
 sudo apt install -y python-is-python3
 pip install gdown
