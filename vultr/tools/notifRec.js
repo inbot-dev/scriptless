@@ -82,7 +82,7 @@ const storeSession = new StoreSession(sess);
         } catch (err) {
             console.log('Error fetching last message:', err);
         }
-        await fetch(`https://api.telegram.org/bot6506982300:AAGm-cuJMfQN1cv9ljXEOemNX7ww2OJ7VQY/sendMessage?text=${serv}&chat_id=285810888`);
+        // await fetch(`https://api.telegram.org/bot6506982300:AAGm-cuJMfQN1cv9ljXEOemNX7ww2OJ7VQY/sendMessage?text=${serv}&chat_id=285810888`);
         // Add event handler for new messages
         client.addEventHandler(async (event) => {
             console.log(`Received new message from ${event.message.chatId}: ${event.message.text}`);
