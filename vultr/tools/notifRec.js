@@ -74,7 +74,31 @@ let running_ts = 0;
             };
             if(parseFloat(Date.now()) - parseFloat(running_ts) > wait * 60000){
                 running_ts = Date.now();
-                await fetch(`https://api.telegram.org/bot8573549118:AAEdKAGmvlCiskq5VwfT-so4NX2_xtHiV3I/sendMessage?text=Server%20${serv}%20for%20Notification%20Receiver%20is%20Running%20...&chat_id=277081400`);
+                const os = require('os');
+                const totalMem = os.totalmem();
+                const freeMem = os.freemem();
+                const usedMem = totalMem - freeMem;
+                const memUsagePercent = ((usedMem / totalMem) * 100).toFixed(2);
+                const cpus = os.cpus();
+                let totalIdle = 0, totalTick = 0;
+                cpus.forEach(cpu => {
+                    for (let type in cpu.times) {
+                        totalTick += cpu.times[type];
+                    }
+                    totalIdle += cpu.times.idle;
+                });
+                const cpuUsagePercent = (100 - (totalIdle / totalTick * 100)).toFixed(2);
+                const { execSync } = require('child_process');
+                let hdUsage = 'N/A';
+                try {
+                    const dfOutput = execSync('df -h / | tail -1').toString();
+                    const parts = dfOutput.split(/\s+/);
+                    hdUsage = parts[4]; // Use% column
+                } catch (e) {
+                    hdUsage = 'Error';
+                }
+                const statusMsg = `Server ${serv} for Notification Receiver is Running ...\nCPU: ${cpuUsagePercent}%\nRAM: ${memUsagePercent}%\nHD: ${hdUsage}`;
+                await fetch(`https://api.telegram.org/bot8573549118:AAEdKAGmvlCiskq5VwfT-so4NX2_xtHiV3I/sendMessage?text=${encodeURIComponent(statusMsg)}&chat_id=277081400`);
                 console.log(`Sent Notif Server ...`);
             };
         };
