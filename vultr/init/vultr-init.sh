@@ -88,32 +88,32 @@ cd /root/gunbot.my.id
 pm2 start gunthy-linux --name=gunbot
 pm2 stop gunbot
 pm2 save --force
-cd
-echo "" >> /etc/crontab
-echo "@daily root sudo apt-get update" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "@daily root pm2 restart notif" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root /root/bekap_r.sh" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "@daily root pm2 restart notif" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root sudo ntpdate -s time.nist.gov" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root [ -f /var/run/reboot-required ] && reboot" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root /root/ws-one_ws91-g.sh" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root /root/ws-one_ws91-g_de.sh" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root /root/ws_work_wss-one.sh" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root /root/ws_work_wss-one_de.sh" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root /root/ws_work_wdjp-g.sh" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root /root/wss-one_ws-g.sh" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "*/2 * * * * root /root/wss-one_ws-g_de.sh" >> /etc/crontab
+# cd
+# echo "" >> /etc/crontab
+# echo "@daily root sudo apt-get update" >> /etc/crontab
+# echo "" >> /etc/crontab
+# echo "@daily root pm2 restart notif" >> /etc/crontab
+# echo "" >> /etc/crontab
+# echo "* * * * * root /root/bekap_r.sh" >> /etc/crontab
+# echo "" >> /etc/crontab
+# echo "@daily root pm2 restart notif" >> /etc/crontab
+# echo "" >> /etc/crontab
+# echo "* * * * * root sudo ntpdate -s time.nist.gov" >> /etc/crontab
+# echo "" >> /etc/crontab
+# echo "* * * * * root [ -f /var/run/reboot-required ] && reboot" >> /etc/crontab
+# echo "" >> /etc/crontab
+# echo "* * * * * root /root/ws-one_ws91-g.sh" >> /etc/crontab
+# echo "" >> /etc/crontab
+# echo "* * * * * root /root/ws-one_ws91-g_de.sh" >> /etc/crontab
+# echo "" >> /etc/crontab
+# echo "* * * * * root /root/ws_work_wss-one.sh" >> /etc/crontab
+# echo "" >> /etc/crontab
+# echo "* * * * * root /root/ws_work_wss-one_de.sh" >> /etc/crontab
+# echo "" >> /etc/crontab
+# echo "* * * * * root /root/ws_work_wdjp-g.sh" >> /etc/crontab
+# echo "" >> /etc/crontab
+# echo "* * * * * root /root/wss-one_ws-g.sh" >> /etc/crontab
+# echo "" >> /etc/crontab
+# echo "*/2 * * * * root /root/wss-one_ws-g_de.sh" >> /etc/crontab
 
 exit 0
