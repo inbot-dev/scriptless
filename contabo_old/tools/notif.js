@@ -2,7 +2,7 @@ const delay = require('delay');
 const fs = require('fs');
 
 // Server
-const serv = 'Scaleway';
+const serv = 'Contabo';
 const wait = 10 // in minute
 // Client
 const chat = 285810888;

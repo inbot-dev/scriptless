@@ -2,7 +2,7 @@
 
 cd
 if ! screen -list | grep -q "bekap"; then
-    screen -dmSL bekap ./bekap.sh
+    screen -dmS bekap ./bekap.sh
 fi
 
 exit 0

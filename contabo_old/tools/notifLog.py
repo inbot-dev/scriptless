@@ -34,7 +34,7 @@ import requests
 
 TELEGRAM_API_KEY = '7361839009:AAG821pqxh5CdIeuc-RYdxGa7rDyH4TI7Bo'
 TELEGRAM_CHAT_ID = '277081400'
-SERVER = 'Scaleway'
+SERVER = 'Contabo'
 # /etc/profile.d
 
 message = ' '.join(sys.argv[1:])

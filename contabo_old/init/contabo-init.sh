@@ -49,41 +49,45 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docke
 sudo apt update
 sudo apt install -y docker-ce
 cd
+sudo swapoff -a
+fallocate -l 20GB /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
 sudo apt-get clean -y
-cd
 echo "" >> /etc/crontab
 echo "@daily root sudo apt-get update" >> /etc/crontab
 echo "" >> /etc/crontab
-echo "@daily root pm2 restart notif" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root /root/bekap_r.sh" >> /etc/crontab
+echo "@daily root /root/bekap_r.sh" >> /etc/crontab
 echo "" >> /etc/crontab
 echo "@daily root pm2 restart notif" >> /etc/crontab
 echo "" >> /etc/crontab
 echo "* * * * * root sudo ntpdate -s time.nist.gov" >> /etc/crontab
 echo "" >> /etc/crontab
+echo "* * * * * root /root/idena.sh" >> /etc/crontab
+echo "" >> /etc/crontab
 echo "* * * * * root [ -f /var/run/reboot-required ] && reboot" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root /root/ws-one_ws91-g.sh" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root /root/ws-one_ws91-g_de.sh" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root /root/ws-one_nxt.sh" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root /root/ws-one_nxt_de.sh" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root /root/ws_work_wss-one.sh" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root /root/ws_work_wss-one_de.sh" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root /root/ws_work_wdjp-g.sh" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root /root/wss-one_ws-g.sh" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "*/2 * * * * root /root/wss-one_ws-g_de.sh" >> /etc/crontab
+chmod +x /etc/fail2ban/jail.local
+printf "[DEFAULT]\nignoreip = 127.0.0.1/89\n\n[sshd]\nenable = true\nport = ssh\nfilter = sshd\nlogpath = /var/log/auth.log\nmaxretry = 4\nbantime = 1d\nignoreip = 127.0.0.1\n\n[myjail]\nenabled = true\nport = 80,8080,443,22,10000\nmaxretry = 6\nbantime = 1d">>/etc/fail2ban/jail.local
+systemctl enable fail2ban.service
+systemctl start fail2ban
+source ~/.bashrc
+command
 sudo apt autoremove -y
 sudo apt-get update
 sudo apt-get clean -y
+mkdir -p /root/gunbot.my.id
+wget https://gunthy.org/downloads/gunthy_linux.zip -P /root/gunbot.my.id
+cd /root/gunbot.my.id
+unzip /root/gunbot.my.id/gunthy_linux.zip -d /root/gunbot.my.id
+cd /root/gunbot.my.id
+rm -rf config-js-example.txt
+rm -rf gunthy_linux.zip __MACOSX
+cd
+chmod +x gunbot.my.id
+chmod +x /root/gunbot.my.id/gunthy-linux
+\cp -avrf /root/gunbot.my.id /root/bitrage.gunbot.my.id
 sudo apt autoremove -y
 a2enmod rewrite
 a2enmod headers
@@ -96,6 +100,9 @@ cd
 cd /root/tools
 pm2 start notif.js --name=notif --node-args="--max-old-space-size=8192"
 pm2 stop notif
+cd /root/gunbot.my.id
+pm2 start gunthy-linux --name=gunbot
+pm2 stop gunbot
 pm2 save --force
 
 exit 0
