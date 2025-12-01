@@ -3,7 +3,7 @@
 cd
 if ! screen -list | grep -q "ws_work_wss-one"; then
     if ! screen -list | grep -q "ws_work_wss-one_de"; then
-        screen -dmS ws_work_wss-one_de rclone dedupe --by-hash --dedupe-mode newest ws-onedrive_work:
+        screen -dmS ws_work_wss-one_de rclone dedupe --by-hash --dedupe-mode newest ws-onedrive_work:IE/S2
 
         # Wait for the dedupe screen session to close
         while screen -list | grep -q "ws_work_wss-one_de"; do
