@@ -66,21 +66,11 @@ echo "* * * * * root [ -f /var/run/reboot-required ] && reboot" >> /etc/crontab
 echo "" >> /etc/crontab
 echo "* * * * * root /root/ws-one_ws91-g.sh" >> /etc/crontab
 echo "" >> /etc/crontab
-echo "* * * * * root /root/ws-one_ws91-g_de.sh" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root /root/ws-one_nxt.sh" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root /root/ws-one_nxt_de.sh" >> /etc/crontab
-echo "" >> /etc/crontab
 echo "* * * * * root /root/ws_work_wss-one.sh" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "* * * * * root /root/ws_work_wss-one_de.sh" >> /etc/crontab
 echo "" >> /etc/crontab
 echo "* * * * * root /root/ws_work_wdjp-g.sh" >> /etc/crontab
 echo "" >> /etc/crontab
-echo "* * * * * root /root/wss-one_ws-g.sh" >> /etc/crontab
-echo "" >> /etc/crontab
-echo "*/2 * * * * root /root/wss-one_ws-g_de.sh" >> /etc/crontab
+echo "*/5 * * * * root /root/wss-one_ws-g.sh" >> /etc/crontab
 sudo apt autoremove -y
 sudo apt-get update
 sudo apt-get clean -y
