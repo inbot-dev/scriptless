@@ -16,6 +16,7 @@ chmod +x /root/gd_bu
     mkdir -p /root/gd_bu/gunbot.my.id
     chmod +x /root/gd_bu/gunbot.my.id
     \cp -avrf /root/gunbot.my.id/* /root/gd_bu/gunbot.my.id/
+    rm -rf /root/gd_bu/gunbot.my.id/node_modules
     zip -r /root/gd_bu/gunbot.my.id.zip /root/gd_bu/gunbot.my.id
     mkdir -p /root/bekap_json/
     chmod +x /root/bekap_json/
