@@ -40,7 +40,7 @@ printf 'enter' | sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 sudo apt-get clean -y
 sudo apt-get install -y php8.4
-sudo apt install php8.2-common php8.4-mysql php8.4-xml php8.4-xmlrpc php8.4-curl php8.4-gd php8.4-imagick php8.4-cli php8.4-dev php8.4-imap php8.4-mbstring php8.4-opcache php8.4-soap php8.4-zip php8.4-intl -y
+sudo apt install php8.4-common php8.4-mysql php8.4-xml php8.4-xmlrpc php8.4-curl php8.4-gd php8.4-imagick php8.4-cli php8.4-dev php8.4-imap php8.4-mbstring php8.4-opcache php8.4-soap php8.4-zip php8.4-intl -y
 sudo apt-get update
 sudo apt-get clean -y
 sudo apt install ntpdate -y
