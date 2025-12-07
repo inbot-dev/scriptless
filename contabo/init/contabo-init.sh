@@ -83,9 +83,23 @@ a2enmod mime
 sudo a2enmod proxy proxy_http proxy_balancer lbmethod_byrequests
 service apache2 restart
 cd
+mkdir -p /root/gunbot.my.id
+wget https://gunthy.org/downloads/gunthy_linux.zip -P /root/gunbot.my.id
+cd /root/gunbot.my.id
+unzip /root/gunbot.my.id/gunthy_linux.zip -d /root/gunbot.my.id
+cd /root/gunbot.my.id
+rm -rf config-js-example.txt
+rm -rf gunthy_linux.zip __MACOSX
+chmod +x /root/gunbot.my.id
+chmod +x /root/gunbot.my.id/gunthy-linux
+sudo apt autoremove -y
+cd
 cd /root/tools
 pm2 start notif.js --name=notif --node-args="--max-old-space-size=8192"
 pm2 stop notif
+cd /root/gunbot.my.id
+pm2 start gunthy-linux --name=gunbot
+pm2 stop gunbot
 pm2 save --force
 
 exit 0
